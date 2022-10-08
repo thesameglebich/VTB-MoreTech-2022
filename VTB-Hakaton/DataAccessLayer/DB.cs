@@ -14,7 +14,7 @@ namespace WebApi.DataAccessLayer
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Activity> Activities { get; set; }
-        //public DbSet<ActivitySolution> ActivitySolutions { get; set; }
+        public DbSet<ActivitySolution> ActivitySolutions { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         //public IQueryable<User> Students => Users.Where(u => u.Role == UserRole.Worker);
@@ -35,6 +35,11 @@ namespace WebApi.DataAccessLayer
                 .HasForeignKey<Group>(g => g.LeadId)
                 .OnDelete(DeleteBehavior.SetNull);
 
+            modelBuilder.Entity<ActivitySolution>()
+                .HasOne(g => g.Author)
+                .WithOne()
+                .HasForeignKey<ActivitySolution>(g => g.AuthorId)
+                .OnDelete(DeleteBehavior.SetNull);
             /*
             modelBuilder.Entity<ActivitySolution>()
                 .HasOne(x => x.Author)

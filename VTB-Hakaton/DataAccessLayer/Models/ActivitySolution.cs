@@ -9,8 +9,8 @@ namespace WebApi.DataAccessLayer.Models
     {
         public string? SolutionText { get; set; }
         public string? SolutionFilePath { get; set; }
-        public int AuthorId { get; set; }
-        public User Author { get; set; }
+        public int? AuthorId { get; set; }
+        public User? Author { get; set; }
         public SolutionType SolutionType { get; set; }
         public string? Verdict { get; set; }
         public int ActivityId { get; set; }

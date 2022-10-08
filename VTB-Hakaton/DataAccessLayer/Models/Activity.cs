@@ -17,7 +17,7 @@ namespace WebApi.DataAccessLayer.Models
         public int? RewardMoney { get; set; }
         public int? AuthorId { get; set; }
         public User? Author { get; set; }
-        //public ICollection<ActivitySolution> ActivitySolutions { get; set; }
+        public ICollection<ActivitySolution> ActivitySolutions { get; set; }
     }
 
     public enum ActivityType

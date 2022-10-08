@@ -28,7 +28,7 @@ namespace WebApi.Controller
             _ctx = ctx;
             _userManager = userManager;
         }
-        /*
+      
         [HttpGet("getActivitySolutionInfo")]
         public Result<ActivitySolutionResponseModel> GetActivitySolutionInfo(int solutionId)
         {
@@ -47,7 +47,7 @@ namespace WebApi.Controller
                 Id = solution.Id,
                 SolutionText = solution.SolutionText,
                 Author = new Models.DTO.UserDto {
-                    Id = solution.AuthorId,
+                    Id = solution.AuthorId.Value,
                     Email = solution.Author.Email,
                     FullName = solution.Author.FullName
                 },
@@ -69,30 +69,94 @@ namespace WebApi.Controller
                     new Error("автор не найден"));
             }
             
-            var activity = _ctx.Groups.FirstOrDefault(x => x.Id == model.GroupId);
+            var activity = _ctx.Activities.FirstOrDefault(x => x.Id == model.ActivityId);
 
-            if (group == null)
+            if (activity == null)
             {
                 return new Result<int>(HttpStatusCode.NotFound,
-                    new Error("группа не найдена"));
+                    new Error("активность не найдена"));
             }
 
-            var activity = new Activity
+            var solution = new ActivitySolution
             {
-                Name = model.Name,
-                Description = model.Description,
-                Group = group,
+                SolutionText = model.SolutionText,
                 Author = author,
-                ActivityType = model.ActivityType,
-                RewardType = model.RewardType,
-                RewardMoney = model.RewardMoney,
-                NftId = model.NftId
+                SolutionType = SolutionType.WaitingApprove,
+                Activity = activity
             };
 
-            _ctx.Activities.Add(activity);
+            _ctx.ActivitySolutions.Add(solution);
             _ctx.SaveChanges();
 
-            return new Result<int>(0);
-        }*/
+            return new Result<int>(solution.Id);
+        }
+
+        [HttpGet("edit")]
+        public Result<ActivitySolutionEditRequestModel> Edit(int id)
+        {
+            var solution = _ctx.ActivitySolutions.FirstOrDefault(x => x.Id == id);
+
+            if (solution == null)
+            {
+                return new Result<ActivitySolutionEditRequestModel>(HttpStatusCode.NotFound,
+                    new Error("решение не найдено"));
+            }
+
+            return new Result<ActivitySolutionEditRequestModel>(new ActivitySolutionEditRequestModel
+            {
+                Id = id,
+                SolutionText = solution.SolutionText,
+            });
+        }
+
+        [HttpPost("edit")]
+        public Result Edit([FromBody] ActivitySolutionEditRequestModel model)
+        {
+            var solution = _ctx.ActivitySolutions.FirstOrDefault(x => x.Id == model.Id);
+
+            if (solution == null)
+            {
+                return new Result(HttpStatusCode.NotFound,
+                    new Error("решение не найдено"));
+            }
+
+            solution.SolutionText = model.SolutionText;
+
+            _ctx.SaveChanges();
+
+            return new Result(HttpStatusCode.OK);
+        }
+
+        [HttpPost("setSolutionType")]
+        public Result SetSolutionType([FromBody] SetSolutionRequestModel model)
+        {
+            var solution = _ctx.ActivitySolutions.FirstOrDefault(x => x.Id == model.ActivityId);
+
+            if (solution == null)
+            {
+                return new Result(HttpStatusCode.NotFound,
+                    new Error("Решение не найдено"));
+            }
+
+            if (solution.SolutionType == SolutionType.Approved)
+            {
+                return new Result(HttpStatusCode.NotFound,
+                    new Error("Изменить оценку нельзя"));
+            }
+
+            solution.SolutionType = model.SolutionType;
+            solution.Verdict = model.Verdict;
+
+            _ctx.SaveChanges();
+
+            return new Result(HttpStatusCode.OK);
+        }
+
+        public class SetSolutionRequestModel
+        {
+            public int ActivityId { get; set; }
+            public SolutionType SolutionType { get; set; }
+            public string Verdict { get; set; }
+        }
     }
 }
