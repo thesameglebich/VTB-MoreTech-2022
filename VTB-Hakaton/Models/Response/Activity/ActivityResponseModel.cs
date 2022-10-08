@@ -16,7 +16,7 @@ namespace WebApi.Models.Response.Activity
         public ActivityType ActivityType { get; set; }
         public RewardType RewardType { get; set; }
         public int? NftId { get; set; }
-        public int? RewardMoney { get; set; }
+        public float? RewardMoney { get; set; }
         public UserDto? Author { get; set; }
     }
 }
