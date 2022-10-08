@@ -7,7 +7,7 @@ namespace VTB_Hakaton.Models.Requests.Wallet
 {
     public class TransferCurrencyRequestModel
     {
-        public string ToPublicKey { get; set; }
+        public string Email { get; set; }
         public float Amount { get; set; }
     }
 }

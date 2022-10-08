@@ -7,7 +7,7 @@ namespace VTB_Hakaton.Models.Requests.Wallet
 {
     public class TransferNftRequestModel
     {
-        public string ToPublicKey { get; set; }
+        public string Email { get; set; }
         public int NftId { get; set; }
     }
 }

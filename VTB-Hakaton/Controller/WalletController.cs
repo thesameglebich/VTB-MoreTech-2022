@@ -41,9 +41,16 @@ namespace VTB_Hakaton.Controller
         {
             var current = await _userManager.GetUserAsync(HttpContext.User);
 
+            var toWallet = _ctx.Users.FirstOrDefault(x => x.Email == model.Email).Email;
+
+            if (string.IsNullOrWhiteSpace(toWallet))
+            {
+                return new Result(HttpStatusCode.NotFound, new Error("Пользователь не найден"));
+            }
+
             var transfer = new TransferCurrency
             {
-                ToPublicKey = model.ToPublicKey,
+                ToPublicKey = toWallet,
                 FromPrivateKey = current.PrivateKey,
                 Amount = model.Amount
             };
@@ -68,9 +75,16 @@ namespace VTB_Hakaton.Controller
         {
             var current = await _userManager.GetUserAsync(HttpContext.User);
 
+            var toWallet = _ctx.Users.FirstOrDefault(x => x.Email == model.Email).Email;
+
+            if (string.IsNullOrWhiteSpace(toWallet))
+            {
+                return new Result(HttpStatusCode.NotFound, new Error("Пользователь не найден"));
+            }
+
             var transfer = new TransferCurrency
             {
-                ToPublicKey = model.ToPublicKey,
+                ToPublicKey = toWallet,
                 FromPrivateKey = current.PrivateKey,
                 Amount = model.Amount
             };
@@ -95,9 +109,16 @@ namespace VTB_Hakaton.Controller
         {
             var current = await _userManager.GetUserAsync(HttpContext.User);
 
+            var toWallet = _ctx.Users.FirstOrDefault(x => x.Email == model.Email).Email;
+
+            if (string.IsNullOrWhiteSpace(toWallet))
+            {
+                return new Result(HttpStatusCode.NotFound, new Error("Пользователь не найден"));
+            }
+
             var transfer = new TransferNft
             {
-                ToPublicKey = model.ToPublicKey,
+                ToPublicKey = toWallet,
                 FromPrivateKey = current.PrivateKey,
                 TokenId = model.NftId
             };
