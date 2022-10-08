@@ -14,7 +14,7 @@ namespace WebApi.DataAccessLayer.Models
         public ActivityType ActivityType { get; set; }
         public RewardType RewardType { get; set; }
         public int? NftId { get; set; }
-        public int? RewardMoney { get; set; }
+        public float? RewardMoney { get; set; }
         public int? AuthorId { get; set; }
         public User? Author { get; set; }
         public ICollection<ActivitySolution> ActivitySolutions { get; set; }
@@ -31,6 +31,5 @@ namespace WebApi.DataAccessLayer.Models
         NFT = 0,
         DigitalRUB = 1,
         Matic = 2,
-        Ruble = 3
     }
 }

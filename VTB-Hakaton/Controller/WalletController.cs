@@ -124,7 +124,7 @@ namespace VTB_Hakaton.Controller
             };
 
             var content = new StringContent(JsonConvert.SerializeObject(transfer), Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(new Uri($"{baseUrl}/v1/transfers/ruble"), content);
+            var response = await _client.PostAsync(new Uri($"{baseUrl}/v1/transfers/nft"), content);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -143,14 +143,14 @@ namespace VTB_Hakaton.Controller
 
         #endregion
 
-        private class TransferCurrency
+        public class TransferCurrency
         {
             public string FromPrivateKey { get; set; }
             public string ToPublicKey { get; set; }
             public float Amount { get; set; }
         }
 
-        private class TransferNft
+        public class TransferNft
         {
             public string FromPrivateKey { get; set; }
             public string ToPublicKey { get; set; }
