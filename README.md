@@ -10,9 +10,9 @@
 ![image](https://user-images.githubusercontent.com/64648731/194741541-7f47ef61-a6d0-4d81-a0e5-42deb32f8256.png)
 
 
-3. С официального сайта [Microsoft](https://learn.microsoft.com/ru-ru/dotnet/core/install/windows?tabs=net60) Установить себе .Net 6 по синей кнопке "Скачать .Net"
+3. С официального сайта [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) Установить себе .Net 5 sdk для вашей операционной системы. 
 
-![image](https://user-images.githubusercontent.com/64648731/194741552-3d357c20-b824-4bd9-9fa6-b0744a0cd9d5.png)
+![image](https://user-images.githubusercontent.com/64648731/194743163-fdb8a3f7-fbd8-4c0b-8786-248d7efa00ba.png)
 
 
 4. После установки .Net необходимо перейти в консоли (WIN + R, написать cmd и нажать ок) в скачанный распакованный архив в папку ..\VTB-Hakaton\VTB-Hakaton , содержащей VTB-Hakaton.csproj файл. 
