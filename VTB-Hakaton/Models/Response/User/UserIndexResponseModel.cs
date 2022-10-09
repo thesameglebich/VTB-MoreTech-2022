@@ -23,7 +23,8 @@ namespace WebApi.Models.Response.User
                     MiddleName = x.MiddleName,
                     Phone = x.Phone,
                     PublicKey = x.PublicKey,
-                    Email = x.Email
+                    Email = x.Email,
+                    Role = x.Role
                 }), page, pageSize);
 
             return new Result<List<UserBaseInfoResponseModel>>(users);

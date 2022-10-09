@@ -141,6 +141,20 @@ namespace VTB_Hakaton.Controller
             return new Result(HttpStatusCode.OK);
         }
 
+        [HttpPost("createNft")]
+        public async Task<Result> CreateNft([FromBody] NftCollectionRequestModel model)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync(new Uri($"{baseUrl}/v1/transfers/nft"), content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Result(HttpStatusCode.BadRequest, new Error("Ошибка при Отправлении"));
+            }
+
+            return new Result(HttpStatusCode.OK);
+        }
+
         #endregion
 
         public class TransferCurrency
@@ -155,6 +169,13 @@ namespace VTB_Hakaton.Controller
             public string FromPrivateKey { get; set; }
             public string ToPublicKey { get; set; }
             public int TokenId { get; set; }
+        }
+
+        public class NftCollectionRequestModel
+        {
+            public string ToPublicKey { get; set; }
+            public string Uri { get; set; }
+            public int NftCount { get; set; }
         }
     }
 }
