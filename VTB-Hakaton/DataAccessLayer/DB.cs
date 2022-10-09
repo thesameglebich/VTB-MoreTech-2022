@@ -34,14 +34,14 @@ namespace WebApi.DataAccessLayer
 
             modelBuilder.Entity<Group>()
                 .HasOne(g => g.Lead)
-                .WithOne()
-                .HasForeignKey<Group>(g => g.LeadId)
+                .WithMany()
+            //.HasForeignKey<Group>(g => g.LeadId)
                 .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<ActivitySolution>()
                 .HasOne(g => g.Author)
-                .WithOne()
-                .HasForeignKey<ActivitySolution>(g => g.AuthorId)
+                .WithMany()
+                //.HasForeignKey<ActivitySolution>(g => g.AuthorId)
                 .OnDelete(DeleteBehavior.SetNull);
             /*
             modelBuilder.Entity<ActivitySolution>()
