@@ -15,19 +15,17 @@
 ![image](https://user-images.githubusercontent.com/64648731/194743163-fdb8a3f7-fbd8-4c0b-8786-248d7efa00ba.png)
 
 
-4. После установки .Net необходимо перейти в консоли (WIN + R, написать cmd и нажать ок) в скачанный распакованный архив в папку ..\VTB-Hakaton\VTB-Hakaton , содержащей VTB-Hakaton.csproj файл. 
+4. После установки .Net необходимо перейти в консоли (WIN + R, написать cmd и нажать ок) в скачанный распакованный архив в папку ..\VTB-MoreTech-2022-master\VTB-Hakaton , содержащей VTB-Hakaton.csproj файл. 
 
 ![image](https://user-images.githubusercontent.com/64648731/194741561-efe08e00-127b-414c-a7d1-24cd8a4d3cc7.png)
 
 
 5. Находясь по указанному выше пути запустить проект командой dotnet run
 
-![image](https://user-images.githubusercontent.com/64648731/194741598-42e9a8f2-d815-4d3c-a7d0-eaa1b5771a6e.png)
+![image](https://user-images.githubusercontent.com/64648731/194743302-1f4b8d35-10a4-401e-8359-aacc6cdca272.png)
 
 
 6. Дождитесь конца сборки проекта
 
-![image](https://user-images.githubusercontent.com/64648731/194741631-7cebe46a-5e7f-44c3-9a98-38cb1d9096bc.png)
-
-![image](https://user-images.githubusercontent.com/64648731/194741640-947a57b5-82b5-4e97-b099-e0a05a87214c.png)
+![image](https://user-images.githubusercontent.com/64648731/194743311-ca4f5472-cd32-4590-9193-825f6eecdd8f.png)
 
