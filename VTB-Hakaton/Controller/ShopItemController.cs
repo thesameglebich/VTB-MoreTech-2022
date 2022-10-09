@@ -76,7 +76,7 @@ namespace VTB_Hakaton.Controller
             });
         }
 
-        [HttpGet("create")]
+        [HttpPost("create")]
         public async Task<Result<int>> Create([FromBody] ShopItemRequestModel model)
         {
             var current = await _userManager.GetUserAsync(HttpContext.User);
@@ -115,6 +115,49 @@ namespace VTB_Hakaton.Controller
             _ctx.SaveChanges();
 
             return new Result<int>(item.Id);
+        }
+
+        [HttpPost("edit")]
+        public async Task<Result<int>> Edit([FromBody] ShopItemRequestModel model)
+        {
+            return new Result<int>(0);
+            /*
+            var current = await _userManager.GetUserAsync(HttpContext.User);
+
+            // проверить мб на принадлежность до запроса отправки
+
+            if (model.NftId != null)
+            {
+                var transfer = new TransferNft
+                {
+                    ToPublicKey = "0x27fF0fEC01610bd78C1F16EE8ac12Fda26A8B94e", // кошелек магазина
+                    FromPrivateKey = current.PrivateKey,
+                    TokenId = model.NftId.Value
+                };
+
+                var content = new StringContent(JsonConvert.SerializeObject(transfer), Encoding.UTF8, "application/json");
+                var response = await _client.PostAsync(new Uri($"{baseUrl}/v1/transfers/nft"), content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Result<int>(HttpStatusCode.BadRequest, new Error("Ошибка при Отправлении"));
+                }
+            }
+
+            var item = new ShopItem
+            {
+                Name = model.Name,
+                Price = model.Price,
+                PriceType = model.PriceType,
+                AvailiableCount = model.AvailiableCount,
+                NftId = model.NftId,
+                Owner = current
+            };
+
+            _ctx.ShopItems.Add(item);
+            _ctx.SaveChanges();
+
+            return new Result<int>(item.Id);*/
         }
     }
 }
