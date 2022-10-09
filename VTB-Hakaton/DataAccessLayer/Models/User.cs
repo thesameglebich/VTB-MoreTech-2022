@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using VTB_Hakaton.DataAccessLayer.Models;
 
 namespace WebApi.DataAccessLayer.Models
 {
@@ -25,7 +26,7 @@ namespace WebApi.DataAccessLayer.Models
         public DateTime CreatedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
         public ICollection<Group> Groups { get; set; }
-        //public ICollection<ActivitySolution> ActivitySolutions { get; set; }
+        public ICollection<ShopItem> ShopItems { get; set; }
 
         public string FullName => Surname + " " + Name + (string.IsNullOrEmpty(MiddleName) ? string.Empty : " " + MiddleName);
         // Surname N. M.

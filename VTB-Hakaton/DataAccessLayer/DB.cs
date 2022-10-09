@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using VTB_Hakaton.DataAccessLayer.Models;
 using WebApi.DataAccessLayer.Models;
 
 namespace WebApi.DataAccessLayer
@@ -10,12 +11,13 @@ namespace WebApi.DataAccessLayer
         {
 
         }
-
+        // Добавить класс Для Нфт, с их копиями , хрвнить в бд факт передачи админу НФТ, потом выводить на фронет все НФТ пользователя
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivitySolution> ActivitySolutions { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<ShopItem> ShopItems { get; set; }
 
         //public IQueryable<User> Students => Users.Where(u => u.Role == UserRole.Worker);
 

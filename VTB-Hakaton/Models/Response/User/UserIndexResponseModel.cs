@@ -26,7 +26,7 @@ namespace WebApi.Models.Response.User
                     Email = x.Email
                 }), page, pageSize);
 
-            return new Result<List<UserBaseInfoResponseModel>>(new List<UserBaseInfoResponseModel>());
+            return new Result<List<UserBaseInfoResponseModel>>(users);
         }
         
         public Result<List<UserBaseInfoResponseModel>> InitStudents(DB ctx)
