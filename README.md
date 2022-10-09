@@ -14,7 +14,7 @@
 
 ![image](https://user-images.githubusercontent.com/64648731/194743163-fdb8a3f7-fbd8-4c0b-8786-248d7efa00ba.png)
 
-4. Перейдите на сайте [Microsoft](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) к загрузке Sql Server и установите для вашей ОС
+4. Перейдите на сайте [Microsoft](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) к загрузке Sql Server и установите для вашей ОС. После чего создайте свой инстанс.
 
 ![image](https://user-images.githubusercontent.com/64648731/194743442-cd26cf38-f574-4553-add6-716ad872f3b8.png)
 
