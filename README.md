@@ -33,3 +33,11 @@
 
 ![image](https://user-images.githubusercontent.com/64648731/194743311-ca4f5472-cd32-4590-9193-825f6eecdd8f.png)
 
+
+
+Второй вариант запуска :
+https://learn.microsoft.com/ru-ru/dotnet/core/install/windows?tabs=net60 Скачайте Visual Studio и установите по инструкции ![image](https://user-images.githubusercontent.com/64648731/194744575-71d47748-2a91-47e4-8ebf-73317619e82f.png)
+При установке выберите .Net 5
+Запустите проект VTB-Hakaton.csproj , открыв в VS
+
+
