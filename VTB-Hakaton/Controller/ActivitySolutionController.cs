@@ -35,7 +35,31 @@ namespace WebApi.Controller
             _userManager = userManager;
             _client = new HttpClient();
         }
-      
+
+        [HttpGet("getActivitySolutionInfo")]
+        public Result<List<ActivitySolutionResponseModel>> GetAllActivitySolutions(int activityId)
+        {
+            var solutions = _ctx.ActivitySolutions
+                .Include(x => x.Author)
+                .Where(x => x.ActivityId == activityId)
+                .Select(x => new ActivitySolutionResponseModel
+                {
+                    Id = x.Id,
+                    SolutionText = x.SolutionText,
+                    Author = new Models.DTO.UserDto
+                    {
+                        Id = x.AuthorId.Value,
+                        Email = x.Author.Email,
+                        FullName = x.Author.FullName
+                    },
+                    SolutionType = x.SolutionType,
+                    Verdict = x.Verdict
+                })
+                .ToList();
+
+            return new Result<List<ActivitySolutionResponseModel>>(solutions);
+        }
+
         [HttpGet("getActivitySolutionInfo")]
         public Result<ActivitySolutionResponseModel> GetActivitySolutionInfo(int solutionId)
         {

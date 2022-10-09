@@ -31,6 +31,37 @@ namespace WebApi.Controller
             _userManager = userManager;
         }
 
+        [HttpGet("getAllGroupInfos")]
+        public Result<List<GroupResponseModel>> GetAllGroupInfos()
+        {
+            var groups = _ctx.Groups
+                .Include(x => x.Users)
+                .Include(x => x.Lead)
+                .Select(group => new GroupResponseModel
+                {
+                    Id = group.Id,
+                    Name = group.Name,
+                    Description = group.Description,
+                    Leader = new UserDto
+                    {
+                        Id = group.Lead.Id,
+                        Email = group.Lead.Email,
+                        FullName = group.Lead.FullName
+                    },
+                    Users = group.Users
+                    .Select(x => new UserDto
+                    {
+                        Id = x.Id,
+                        Email = x.Email,
+                        FullName = x.FullName
+                    })
+                    .ToList()
+                })
+                .ToList();
+
+            return new Result<List<GroupResponseModel>>(groups);
+        }
+
         [HttpGet("getGroupInfo")]
         public Result<GroupResponseModel> GetGroupInfo(int groupId)
         {

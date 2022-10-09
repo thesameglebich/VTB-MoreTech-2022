@@ -30,6 +30,33 @@ namespace WebApi.Controller
             _userManager = userManager;
         }
 
+        [HttpGet("getAllActivityInfos")]
+        public Result<List<ActivityResponseModel>> GetAllActivityInfos(int groupId)
+        {
+            var activities = _ctx.Activities
+                .Include(x => x.Author)
+                .Where(x => x.GroupId == groupId)
+                .Select(x => new ActivityResponseModel {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description,
+                    GroupId = x.GroupId,
+                    ActivityType = x.ActivityType,
+                    RewardType = x.RewardType,
+                    NftId = x.NftId,
+                    RewardMoney = x.RewardMoney,
+                    Author = x.Author != null ? new UserDto
+                    {
+                        Id = x.AuthorId.Value,
+                        Email = x.Author.Email,
+                        FullName = x.Author.FullName
+                    } : null
+                })
+                .ToList();
+
+            return new Result<List<ActivityResponseModel>>(activities);
+        }
+
         [HttpGet("getActivityInfo")]
         public Result<ActivityResponseModel> GetActivityInfo(int activityId)
         {

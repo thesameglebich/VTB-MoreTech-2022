@@ -12,6 +12,7 @@ namespace WebApi.DataAccessLayer
 
         }
         // Добавить класс Для Нфт, с их копиями , хрвнить в бд факт передачи админу НФТ, потом выводить на фронет все НФТ пользователя
+        //Добавить сущность транзакции для хранения информации об итемах, переводах и тд
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Activity> Activities { get; set; }
