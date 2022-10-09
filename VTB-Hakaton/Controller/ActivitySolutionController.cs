@@ -36,7 +36,7 @@ namespace WebApi.Controller
             _client = new HttpClient();
         }
 
-        [HttpGet("getActivitySolutionInfo")]
+        [HttpGet("getAllActivitySolutions")]
         public Result<List<ActivitySolutionResponseModel>> GetAllActivitySolutions(int activityId)
         {
             var solutions = _ctx.ActivitySolutions
