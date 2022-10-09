@@ -106,7 +106,7 @@ namespace WebApi.Controller
                 .Where(x => model.WorkerIds.Contains(x.Id))
                 .ToList();
 
-            var leader = _ctx.Users.FirstOrDefault(x => x.Id == model.Id);
+            var leader = _ctx.Users.FirstOrDefault(x => x.Id == model.LeaderId);
 
             if (leader == null)
             {
@@ -177,7 +177,7 @@ namespace WebApi.Controller
                 .Where(x => model.WorkerIds.Contains(x.Id))
                 .ToList();
 
-            var leader = _ctx.Users.FirstOrDefault(x => x.Id == model.Id);
+            var leader = _ctx.Users.FirstOrDefault(x => x.Id == model.LeaderId);
 
             if (leader == null)
             {
